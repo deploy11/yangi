@@ -25,5 +25,5 @@ def categores(request):
     if category == None:
             film = Film.objects.all()
     else:
-            film = Film.objects.filter(category__name=qi)
+            film = Film.objects.filter(category__nomi=qi)
     return render(request,'cate.html',{'film':film,'category':category,'qi':qi})
