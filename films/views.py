@@ -6,11 +6,11 @@ from django.views.generic import DetailView
 def home(request):
     if 'q' in request.GET:
         q = request.GET['q']
-        film = Film.objects.filter(Q(title__icontains=q)) 
+        film = Film.objects.filter(Q(title__icontains=q)).order_by('-id') 
         category = Category.objects.all()
     else:
         category = Category.objects.all()
-        film = Film.objects.all()
+        film = Film.objects.all().order_by('-id')
       
     return render(request,'list.html',{'film':film,'category':category,})
 
